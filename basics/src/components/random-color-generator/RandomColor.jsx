@@ -4,29 +4,32 @@ export default function RandomColor() {
   const [typeOfColor, setTypeOfColor] = useState("hex");
   const [color, setColor] = useState("#000000");
 
+  // Utility function to generate a random number within a given range
   function randomColorUtility(length) {
     return Math.floor(Math.random() * length);
   }
 
+  // Function to create a random HEX color
   function handleCreateRandomHexColor() {
-    // #678765
-    const hex = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+    const hexChars = "0123456789ABCDEF";
     let hexColor = "#";
 
     for (let i = 0; i < 6; i++) {
-      hexColor += hex[randomColorUtility(hex.length)];
+      hexColor += hexChars[randomColorUtility(hexChars.length)];
     }
     setColor(hexColor);
   }
 
+  // Function to create a random RGB color
   function handleCreateRandomRgbColor() {
     const r = randomColorUtility(256);
     const g = randomColorUtility(256);
     const b = randomColorUtility(256);
 
-    setColor(`rgb(${r},${g}, ${b})`);
+    setColor(`rgb(${r},${g},${b})`);
   }
 
+  // Effect to generate color based on typeOfColor state
   useEffect(() => {
     if (typeOfColor === "rgb") handleCreateRandomRgbColor();
     else handleCreateRandomHexColor();
@@ -59,8 +62,8 @@ export default function RandomColor() {
           color: "#fff",
           fontSize: "60px",
           marginTop: "50px",
-          flexDirection  :'column',
-          gap :'20px'
+          flexDirection: "column",
+          gap: "20px"
         }}
       >
         <h3>{typeOfColor === "rgb" ? "RGB Color" : "HEX Color"}</h3>
