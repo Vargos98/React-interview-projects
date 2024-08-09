@@ -2,10 +2,12 @@ import React from 'react'
 
 import './index.css'
 import RandomColor from './components/random-color-generator/RandomColor'
+import Accordian from './components/Accordian/Accordian'
 const App = () => {
   return (
     <div>
-      <RandomColor/>
+      {/* <Accordian />
+      <RandomColor /> */}
     </div>
   )
 }
